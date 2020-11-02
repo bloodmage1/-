@@ -1,0 +1,21 @@
+def 피보(n):
+    if n==1:
+        return 1
+    if n==2:
+        return 1
+    else:
+        return 피보(n-2)+피보(n-1)
+
+fib=[1,1]
+n=84
+k=19
+for i in range(2,k):
+    fib.append(fib[i-1]+fib[i-2])
+for j in range(k,k+1):
+    fib.append(fib[j-1]+fib[j-2]-fib[j-k])
+for l in range(k+1,k+2):
+    fib.append(fib[l-1]+fib[l-2]-1)
+for m in range(k+2,n):
+    fib.append(fib[m-1]+fib[m-2]-fib[m-k-1])
+print(fib[83])
+
