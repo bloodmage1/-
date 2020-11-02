@@ -1,0 +1,8 @@
+def new_fibo(n, k):
+    if n==1:
+        return 1
+    if n==2:
+        return 1
+    else:
+        return k*new_fibo(n-2,k) + new_fibo(n-1,k)
+print(new_fibo(5,3))
