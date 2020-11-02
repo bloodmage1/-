@@ -1,0 +1,7 @@
+def cal(q,w,e):
+    return 1-((w/(q+w+e))*((w-1)/(q+w+e-1))*(1/4) + (w/(q+w+e))*((e)/(q+w+e-1)) + (e/(q+w+e))*((e-1)/(q+w+e-1)))
+    
+print(cal(15,15,28))
+
+
+AA, Aa, aa 가 있을 때,  
