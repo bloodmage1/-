@@ -1,0 +1,34 @@
+def fac(n):
+    if n ==1 :
+        return 1
+    if n ==0:
+        return 1
+    return n* fac(n-1)
+def combi(a,b):
+    if b ==0:
+        return 1
+    if b == 1:
+        return 1
+    return fac(a)/(fac(b)*fac(a-b))
+
+def Expe(k,N):
+    f3 = []
+    f1 = (3/4)
+    f2 = (1/4)
+    for n in range(N):
+        f3.append(combi(2**k,(2**k-n))*(f1**((2**k)-n))*((f2)**n))
+        적어도 = sum(f3)
+    return 1-적어도
+
+
+print(round(Expe(2,1),3))
+
+한글로 먼저 식을 쓰고 파이썬으로 식을 풀어쓰는데, 여간 어려운 게 아니었습니다.
+
+멘델의 첫번째 식에서 Aa 끼리 교배한다면 1/4, 2/4, 1/4 씩 나왔는데,
+
+이건 AaBb 가 교배했을 때의 비율도 나타날거라는 가정하에 나타내는 것입니다. 
+
+적어도 n명의 AaBb가 k세대에 있을 확률이란 것은 
+
+k세대에 AaBb n명 이하로 있을 확률을 더해줘야 하는 것입니다.
