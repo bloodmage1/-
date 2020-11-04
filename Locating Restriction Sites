@@ -1,0 +1,32 @@
+def reverse(s1):
+    b= ""
+    for i in s1:
+        b = i+b
+    b=b.replace("T","a")
+    b=b.replace("C","g")
+    b=b.replace("G","c")
+    b=b.replace("A","t")
+    b=b.upper()
+    return b
+s1=s1+"HHHHHHHHHHHH"
+def sol(s1):
+    for j in range(len(s1)-12):
+        if s1[j:j+4] == reverse(s1[j:j+4]): 
+            print(j+1, 4)
+        if s1[j:j+6] == reverse(s1[j:j+6]):
+            print(j+1, 6)
+        if s1[j:j+8] == reverse(s1[j:j+8]):
+            print(j+1, 8)
+        if s1[j:j+10] == reverse(s1[j:j+10]):
+            print(j+1, 10)
+        if s1[j:j+12] == reverse(s1[j:j+12]):
+            print(j+1, 12)       
+sol(s1)
+
+제한효소는 호모디머로, 두 개의 동일한 하부구조로 구성되어 있다.
+
+이러한 각각의 구조는 페이지 DNA 분자의 한 가닥을 결합하고 절단하기 위해
+
+제한 효소와 분리된다. 두 하위 구조물은 페이지 DNA 내에서 4~12개의 뉴클레오티드를 포함하는
+
+동일한 표적 문자열로 미리 프로그램된다.
