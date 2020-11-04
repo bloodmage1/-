@@ -1,0 +1,26 @@
+n=3        
+a=[]
+for i in range(1,n+1):
+    a.append(i)
+import itertools
+b=itertools.permutations(a,3)
+
+for i in list(b):
+    for j in i:
+        print(j, end=' ')
+    print()
+    
+    
+synteny block 은 같은 염색체에 위치한 연속적인 유전자의 집합체다.
+
+이 블록은 대부분이 게놈 재배열로 보존되고
+
+두 게놈을 만들 수 있었던 재배열을 분석함으로써 게놈 비교를 하게 된다.
+
+
+A pair of synteny blocks from two different species are not strictly identical 
+(they are separated by the action of point mutations or very small rearrangements), 
+but for the sake of studying large-scale rearrangements, we consider them to be equivalent. 
+As a result, we can label each synteny block with a positive integer; 
+when comparing two species' genomes/chromosomes, 
+we then only need to specify the order of its numbered synteny blocks.
