@@ -1,0 +1,59 @@
+TEXT = """>Rosalind_1
+GATTACA
+>Rosalind_2
+TAGACCA
+>Rosalind_3
+ATACA
+"""
+
+s1 = """
+TAGACCA
+""".replace("\n","")
+s2 ="""
+ATACA
+""".replace("\n","")
+
+def main():
+    data_dict = {}
+    key = ""
+    value = ""
+    for line in TEXT.split("\n"):
+        if line.startswith(">"):
+            if key:
+                data_dict[key] = value
+            key = line[1:].strip()
+            value = ""
+        else:
+            value += line.strip()
+    return data_dict
+                
+def lcs(word1, word2): 
+    max = 0 
+    index = 0 
+    letters = [[0 for _ in range(len(word2) + 1)] for _ in range(len(word1) + 1)] 
+
+    for i in range(len(word1)): 
+        for j in range(len(word2)): 
+            if word1[i] == word2[j]: 
+                letters[i+1][j+1] = letters[i][j] + 1 
+            if max < letters[i+1][j+1]: 
+                max = letters[i+1][j+1] 
+                index = i + 1 
+    return word1[index-max:index] 
+
+data1=[]
+for k1, v1 in main().items():
+    p = lcs(lcs(s1,s2),v1)
+    data1.append(p.split("\n"))
+    data1.sort(key=len)
+    data1_sol = (data1[0])
+print(data1_sol)
+
+
+DNA 에서 서로 다른 유기체나 종에 의해 공유된 유전자를 나타낼 수 있는 유사성 영역을 식별하고
+
+여러 다른 게놈을 동시에 사냥해야 한다.
+
+그러한 유사성에 가장 단순한 영역은 데이터베이스에서 가져온 유전적 문자열의 모든 집합에서 돌연변이 없이 발생하는 모티브다.
+
+더 긴 모티브가 더 큰 공유기능을 나타내기 때문에, 긴 공유 하위 문자열을 찾아야 한다.
