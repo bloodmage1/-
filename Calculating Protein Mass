@@ -1,0 +1,50 @@
+table = """
+        A   71.03711
+        C   103.00919
+        D   115.02694
+        E   129.04259
+        F   147.06841
+        G   57.02146
+        H   137.05891
+        I   113.08406
+        K   128.09496
+        L   113.08406
+        M   131.04049
+        N   114.04293
+        P   97.05276
+        Q   128.05858
+        R   156.10111
+        S   87.03203
+        T   101.04768
+        V   99.06841
+        W   186.07931
+        Y   163.06333 
+        """
+table = zip(table.split()[::2],table.split()[1::2])
+table = dict(table)
+for k in table.keys():
+    table[k] = float(table[k])
+
+# read txt file
+f = open('rosalind_prtm_1_dataset.txt')
+protein = f.readline().strip()
+f.close()
+
+# answer
+def getMass(protein):
+    mass = 0
+    for a in protein:
+        mass += table[a]
+    return round(mass,3)
+
+print(getMass(protein))
+
+인접한 아미노산의 모든 쌍은 하나의 물 분자를 잃었는데, 이는 n 아미노산을함유한 폴리펩타이드에
+
+n-1 물 분자가 제거되었다는 것을 의미한다.
+
+개별 원자의 질량을 합산하여 잔류물의 질량을 계산할 수 있다.
+(분자 내 각 원자의 평균 질량)
+
+단백질의 질량은 아미노산 잔류물의 단수(single water)질량과 단일 물 분자의 질량을 합한 것이다.
+
