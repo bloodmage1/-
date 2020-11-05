@@ -1,0 +1,140 @@
+map = {"UUU":"F", "UUC":"F", "UUA":"L", "UUG":"L",
+    "UCU":"S", "UCC":"S", "UCA":"S", "UCG":"S",
+    "UAU":"Y", "UAC":"Y", "UAA":"STOP", "UAG":"STOP",
+    "UGU":"C", "UGC":"C", "UGA":"STOP", "UGG":"W",
+    "CUU":"L", "CUC":"L", "CUA":"L", "CUG":"L",
+    "CCU":"P", "CCC":"P", "CCA":"P", "CCG":"P",
+    "CAU":"H", "CAC":"H", "CAA":"Q", "CAG":"Q",
+    "CGU":"R", "CGC":"R", "CGA":"R", "CGG":"R",
+    "AUU":"I", "AUC":"I", "AUA":"I", "AUG":"M",
+    "ACU":"T", "ACC":"T", "ACA":"T", "ACG":"T",
+    "AAU":"N", "AAC":"N", "AAA":"K", "AAG":"K",
+    "AGU":"S", "AGC":"S", "AGA":"R", "AGG":"R",
+    "GUU":"V", "GUC":"V", "GUA":"V", "GUG":"V",
+    "GCU":"A", "GCC":"A", "GCA":"A", "GCG":"A",
+    "GAU":"D", "GAC":"D", "GAA":"E", "GAG":"E",
+    "GGU":"G", "GGC":"G", "GGA":"G", "GGG":"G"}
+
+def rna(s):
+    ROS1="TAGATAGGCCCC"
+    ROS2="TGCCTAGTCTCTTTTTG"
+    ROS3="AGGGGGCGGCAGTGCAATGCTC"
+    ROS4="ATCGAGGAATTCGGAAACCCCCCCGTG"
+    ROS5="ATGGAACACTGTGAGAACATAGCATA"
+    ROS6="CGTAAATTTAAAAATGCCAAGGGTACCACTTCCGGATG"
+    ROS7="GACAACAAATCTGCA"
+    ROS8="CGGCGTACGGGAGCATACATGGGACGGAGAGTTGAGCGGGTCTGCCG"
+    ROS9="AGTTGGGGCGTGCATTCTCCTTGA"
+    ROS10="TACGTGGGAG"
+    ROS11="CGTCTGGAGAATACATCGAATG"
+    ROS12="AGGCCATCAATTATGACCATTGAGAA"
+    ROS13="TTACGGACGAGGGACAT"
+    ROS14="GTTTTGTCCCC"
+    ROS15="CGGACAGGTGCGATGAGCTACTTGACGAAGCCCTCTACAGATTA"
+    # ROS16=""
+    s= s.replace(ROS1,"")
+    s= s.replace(ROS2,"")
+    s= s.replace(ROS3,"")
+    s= s.replace(ROS4,"")
+    s= s.replace(ROS5,"")
+    s= s.replace(ROS6,"")
+    s= s.replace(ROS7,"")
+    s= s.replace(ROS8,"")
+    s= s.replace(ROS9,"")
+    s= s.replace(ROS10,"")
+    s= s.replace(ROS11,"")
+    s= s.replace(ROS12,"")
+    s= s.replace(ROS13,"")
+    s= s.replace(ROS14,"")
+    s= s.replace(ROS15,"")
+    # s= s.replace(ROS16,"")
+
+    s = s.replace("T","U")
+    
+    a = s.find("AUG")
+    for i in range(int(len(s)/3)):
+        if s[a+3*i:a+3*i+3] in map:
+            print(map[s[a+3*i:a+3*i+3]], end = '')
+
+rna("""
+ATGCGAGTAGAAGTTGTGCTACGAATATTAAGCATAGGACATCTAAATAGCGCACCACTG
+CCATACGTGGGAGCCATTGACAGCCATTTACCCATCTGATTTCATGTGTGAGTCGACGAC
+TTATCTATTCTCATTACGGACGAGGGACATTGCAATTTCAGGGGTTTGATCATCGGAAAA
+AGCGTTTTGTCCCCATTTGGGCGAGTTTGAGGGGTCGGCGTACGGGAGCATACATGGGAC
+GGAGAGTTGAGCGGGTCTGCCGGGGCTACTTATTGAACCATGGAGATGTGATCTGGTGGG
+CTCCGCCAGGCCATCAATTATGACCATTGAGAACCTAAAGCAGGCCCCCAAAGCAGGCGC
+TCTGACAACAAATCTGCAAAGGGCGGTACGATGAATGAACAGGGACGGCTCGCCACAGGT
+AGGGATGGTAGGGGGCGGCAGTGCAATGCTCATCGATTACGATCTAGTCCCACCTGCTTC
+AGTGCGCCTACATCACCGTAAATTTAAAAATGCCAAGGGTACCACTTCCGGATGCCATAT
+CGTCGGGGACCTTTCCATAAGGTACTGGCCAGGCAACGTCTGGAGAATACATCGAATGCA
+AATTATGGGATACCCGAACCTGATCGAGGAATTCGGAAACCCCCCCGTGCGAGGCGTCTA
+CGACGACACGGTAGCCCCGGGCTTATGGCCCCCGTATACACGGATGGAACACTGTGAGAA
+CATAGCATACTACATCCTAATTTTAGTTGGGGCGTGCATTCTCCTTGAACCAGATACCGC
+ATGACTCGGACAGGTGCGATGAGCTACTTGACGAAGCCCTCTACAGATTAATATACTTGG
+GTGACGTCGAGAATCCTCCTGAGAGTCCTACTTGCCTAGTCTCTTTTTGATTAATGACCC
+ACAGCATGCCTAGATAGGCCCCATTCCTATATGTAACTCATTAGGCAGATCTATAATGCT
+ATTCTAG
+""".replace("\n", ""))
+
+이건 제 풀이긴 한데 틀린 풀이나 다름없습니다..
+
+다른 사람의 풀이를 참고하겠습니다.
+
+앞으로 문제 풀 때, 바이오파이썬을 적극 활용하겠습니다.
+
+바이오파이썬 공부를 시작하겠습니다.
+
+from Bio import SeqIO
+from Bio.Seq import Seq
+
+# SeqIO.read() 는 단일 레코드를 읽고
+# SeqIO.parse() 는 하나 이상의 레코드를 읽는다.
+
+# seq = SeqIO.read("one.fasta.txt","fasta")
+# print(type(seq))
+# print(seq)
+
+# seq2 = SeqIO.parse("two.fasta.txt","fasta")
+# for s in seq2:
+#     print(type(s))
+#     print(s)
+도움을 줄 수 있는 예제
+
+
+seqs = SeqIO.parse("rosalind_splc_4_dataset.txt","fasta")
+exons = [x.seq for x in seqs]
+
+# 이런 식으로 나옴 [Seq('ATGCGAGTAGAAGTTGTGCTACGAATATTAAGCATAGGACATCTAAATAGCGCA...TAG'), Seq('TAGATAGGCCCC'), Seq('TGCCTAGTCTCTTTTTG'), Seq('AGGGGGCGGCAGTGCAATGCTC'), Seq('ATCGAGGAATTCGGAAACCCCCCCGTG'), Seq('ATGGAACACTGTGAGAACATAGCATA'), Seq('CGTAAATTTAAAAATGCCAAGGGTACCACTTCCGGATG'), Seq('GACAACAAATCTGCA'), Seq('CGGCGTACGGGAGCATACATGGGACGGAGAGTTGAGCGGGTCTGCCG'), Seq('AGTTGGGGCGTGCATTCTCCTTGA'), Seq('TACGTGGGAG'), Seq('CGTCTGGAGAATACATCGAATG'), Seq('AGGCCATCAATTATGACCATTGAGAA'), Seq('TTACGGACGAGGGACAT'), Seq('GTTTTGTCCCC'), Seq('CGGACAGGTGCGATGAGCTACTTGACGAAGCCCTCTACAGATTA')]
+
+premRNA = str(exons.pop(0))
+# 가장 첫번째 엑손을 premRNA 로 설정
+
+for exon in exons:
+    premRNA = premRNA.replace(str(exon), "")
+
+print(Seq(premRNA).translate(to_stop=True))
+#이건 번역을 하는 방법
+# print(Seq(premRNA).complemant()) A-T, G-C
+# print(Seq(premRNA).reverse_complemant()) 이건 [::-1] 만 하면 되기 때문에 굳이 알필요는 없음
+
+DNA의 전체 변위체가 RNA로 변환되어 한 번에 하나의 코돈으로 변환되는 것이 아니다.
+
+premRNA 는 인트론과 엑손이라고 불리는 작은 부분으로 먼저 잘려진다.
+
+단백질 번역을 위해 인트론은 밖으로 던져지고,
+
+엑손들은 순차적으로 접착되어 최종적인 mRNA가 만들어진다.
+
+이 절단 및 붙여넣기 과정을 splicing 이라고 한다.
+
+In terms of DNA, the exons deriving from a gene are collectively known as the gene's coding region.
+(해석 애매.)
+
+보충설명:
+유전자의 나머지 부분은 인트론 또는 RNA splicing 중에 분할되어 버려진다.
+
+이 유전자의 엑손은 단백질로의 변환을 위해 mRNA의 한 가닥으로 조립된다.
+
+인간 게놈의 약 5%만이 코딩영역에 있다.
+
+그리고 코딩영역은 GC 와 transition to transversion 이 높은 영역일 확률이 높다
