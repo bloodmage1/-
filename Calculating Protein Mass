@@ -25,6 +25,10 @@ table = dict(table)
 for k in table.keys():
     table[k] = float(table[k])
 
+# 테이블 저런 형태로 되어있는것들은 split() 을 하면 일자로 뜨는데, 짝수개로 홀수개로 묶은 다음 dict 시키면 원하는 형태로 변환
+# for i in range(len()): if i%2 == 0  table[i] =float(table[i]) 는 for k in table.keys(): table[k]=float(table[k])
+
+
 # read txt file
 f = open('rosalind_prtm_1_dataset.txt')
 protein = f.readline().strip()
