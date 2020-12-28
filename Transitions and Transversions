@@ -1,0 +1,18 @@
+자료소실로 인한 참고 참조답안 게시
+
+seqs = [] 
+for line in open('rosalind_tran.txt'):
+    if line.startswith('>'):
+        seqs.append('')
+    else:
+        seqs[len(seqs)-1] += line.rstrip()
+trs = 0
+trv = 0
+for (a, b) in list(zip(seqs[0], seqs[1])):
+    if a == b:
+        continue
+    elif a+b in ['AG','GA','CT','TC']:
+        trs += 1
+    else:
+        trv += 1    
+print(trs/trv)
