@@ -1,0 +1,61 @@
+from itertools import product
+
+ros="""
+CTTCGAAAGTTTGGGCCGAGTCTTACAGTCGGTCTTGAAGCAAAGTAACGAACTCCACGG
+CCCTGACTACCGAACCAGTTGTGAGTACTCAACTGGGTGAGAGTGCAGTCCCTATTGAGT
+TTCCGAGACTCACCGGGATTTTCGATCCAGCCTCAGTCCAGTCTTGTGGCCAACTCACCA
+AATGACGTTGGAATATCCCTGTCTAGCTCACGCAGTACTTAGTAAGAGGTCGCTGCAGCG
+GGGCAAGGAGATCGGAAAATGTGCTCTATATGCGACTAAAGCTCCTAACTTACACGTAGA
+CTTGCCCGTGTTAAAAACTCGGCTCACATGCTGTCTGCGGCTGGCTGTATACAGTATCTA
+CCTAATACCCTTCAGTTCGCCGCACAAAAGCTGGGAGTTACCGCGGAAATCACAG
+""".replace("\n","")
+a=[]
+b=[]
+c=[]
+d=[]
+e=[]
+n=4
+for i in product(['A','C','G','T'],repeat=n):
+   a.append("".join(i))
+
+for i,v in enumerate(a):
+    b.append((v,i))
+
+b=dict(b)
+
+for i in range(len(ros)-3):
+    if ros[i:i+n] in b:
+        c.append(b[ros[i:i+n]])
+
+for i in range(4**n):
+    d=[0 for i in range(4**n)]
+
+for i in c:
+    d[i]+=1
+
+for i in d:
+    print(i, end=' ')
+
+
+my answer
+
+    
+def main():
+    with open('rosalind_kmer.txt', 'r') as infile:
+        dna = ''.join(infile.read().split('\n')[1:])
+
+    k = 4
+    table = {}
+    for kmer in product('ACGT', repeat=k):
+        table[''.join(kmer)] = 0
+
+    for i in range(len(dna) - k + 1):
+        kmer = dna[i:i + k] 
+        table[kmer] = table[kmer] + 1
+
+    for kmer in product('ACGT', repeat=k):
+        print(table[''.join(kmer)], end=' ')
+
+main()
+
+recommended answer
