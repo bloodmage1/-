@@ -1,0 +1,42 @@
+import random
+import itertools
+n=4
+a=[]
+b=[]
+
+for i in range(-1,-n-1,-1):
+    a.append(i)
+for j in range(1,n+1):
+    a.append(j)
+
+b=list(itertools.permutations(a,n))
+
+def f(item:tuple):
+    ret=(-1 in item and 1 in item) or (-2 in item and 2 in item) or (-3 in item and 3 in item) or (-4 in item and 4 in item)
+    return not ret
+
+b=list(filter(f,b))
+print(len(b))
+for i in b:
+    for j in i:
+        print(j, end=' ')
+    print()
+    
+my answer
+
+
+
+
+
+
+n = 3
+
+lst = [x for x in permutations([i for i in range(-n,n+1) if (i != 0)], n) if set(range(1, n+1)) == set(map(abs,x))]
+print len(lst)
+for i in lst:
+    print(" ".join(map(str,i)))
+    
+    
+recommended anwer    
+
+
